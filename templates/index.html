@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Scan Application</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div class="pagetitle"><h1>10K-inator</h1></div>
+<div class="dropdown-container">
+    <div class="dropdown">
+        <h1>Select Sector:</h1>
+        <select id="sector" onchange="getCompanies()">
+            <option value="">Select Sector</option>
+            {% for sector in sectors %}
+                <option value="{{ sector }}">{{ sector }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="dropdown">
+        <h1>Select Company:</h1>
+        <select id="company" onchange="getURL()">
+            <option value="">Select Company</option>
+        </select>
+    </div>
+</div>
+<div class="dataframe">
+    <h1>Company 10K URL:</h1>
+    <h3>NOTE: The scan can take a few minutes to complete and display the results. When it is finished, scroll to the bottem to export the results to a csv.</h3>
+    <p id="url"></p>
+    <div id="firstbutton"><button onclick="performRiskScan()">Perform Risk Scan</button>
+        <div id="spinner-container">
+                <img id="spinner" src="static/images/spinner.gif" alt="Loading...">
+        </div>
+    </div>
+    <div id="risk-scan-results"></div> <!-- This div will display the risk scan results -->
+    <div id="secondbutton"><button onclick="downloadCSV()">Download CSV</button></div>
+</div>
+<script src="static/js/script.js"></script>
+</body>
+</html>
+
